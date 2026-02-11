@@ -4,8 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>tarea 4</title>
+    <style>
+  body.dark {
+    background-color: #222; /* fondo oscuro */
+    color: white;           /* texto blanco */
+  }
+
+  /* Cambiar estilo de botones en modo oscuro */
+  body.dark button {
+    background-color: #555;
+    color: white;
+    /* border: none; */
+  }
+
+  body.dark input {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+  }
+</style>
 </head>
 <body>
+    <button class="toogle">cambiar</button>
     <h2>Tareas</h2>
     <form class="" action="">
         <input class="texto-tareas" placeholder="escribe aqui...">

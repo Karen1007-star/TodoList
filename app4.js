@@ -3,7 +3,13 @@ $padreLista = document.querySelector(".padre-lista");
 $eliminar = document.querySelector(".eliminar");
 $editar = document.querySelector(".editar");
 $añadir = document.querySelector(".añadir");
-document.addEventListener("DOMContentLoaded", cargarLocal);
+document.addEventListener("DOMContentLoaded", ()=>{
+    cargarLocal();
+    const modo = localStorage.getItem("modoOscuro");
+    if (modo === "true") {
+        document.body.classList.add("dark");
+    }
+});
 
 $añadir.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -16,17 +22,17 @@ $añadir.addEventListener("click",(e)=>{
     guardarLocal();
 })
 
-    function eliminar(identidad){
-        if(confirm("estas seguro?")){
-            identidad.remove();
-            guardarLocal();
-        }
-    }
-    function editar (identidad){
-        const tarea = prompt("edita aqui:", identidad.firstChild.textContent)
-        identidad.firstChild.textContent = tarea;
+function eliminar(identidad){
+    if(confirm("estas seguro?")){
+        identidad.remove();
         guardarLocal();
     }
+}
+function editar (identidad){
+    const tarea = prompt("edita aqui:", identidad.firstChild.textContent)
+    identidad.firstChild.textContent = tarea;
+    guardarLocal();
+}
 
 $padreLista.addEventListener("click",(e)=>{
     if(e.target.classList.contains("eliminar")){
@@ -55,10 +61,19 @@ function cargarLocal() {
     tareas.forEach(tarea => {
         const lista = document.createElement("li");
         lista.textContent = tarea;
-
+        
         lista.appendChild(crearBotones("❌","eliminar"));
         lista.appendChild(crearBotones("✏️","editar"));
-
+        
         $padreLista.appendChild(lista);
     });
 }
+const toggle = document.querySelector(".toogle");
+toggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark");
+    if (document.body.classList.contains("dark")) {
+    localStorage.setItem("modoOscuro", "true");
+  } else {
+    localStorage.setItem("modoOscuro", "false");
+  }
+});
