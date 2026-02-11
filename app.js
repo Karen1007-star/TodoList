@@ -24,6 +24,8 @@ function createButton(text, className) {
   btn.className = className;
   return btn;
 }
+
+
 taskList.addEventListener("click",(e)=>{
     if(e.target.classList.contains("delete-btn")){
         deleteTask(e.target.parentElement)
