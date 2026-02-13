@@ -16,10 +16,31 @@ formulario1.addEventListener("submit",(e)=>{
     texto1.value=""    
 })
 
+listaPadre.addEventListener("click",(e)=>{
+    if(e.target.classList.contains("eliminar")){
+        eliminar1(e.target.parentElement)
+    }else if(e.target.classList.contains("editar")){
+        editar1(e.target.parentElement)
+    }
+})
+
+function eliminar1 (identidad){
+    if(confirm("estas seguro?")){
+        identidad.remove();
+    }
+}
+
+function editar1 (identidad){
+    const nuevo = prompt("EScribe la edicion");
+    identidad.firstChild.textContent=nuevo;
+}
+
 function crearBotonesNuevos(nombre, tipo){
     const boton = document.createElement("button")
     boton.textContent = nombre;
     boton.classList = tipo;
     return boton
 }
+
+
 
