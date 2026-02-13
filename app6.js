@@ -10,15 +10,16 @@ formulario1.addEventListener("submit",(e)=>{
     const valor = texto1.value;
     const listaNueva = document.createElement("li")
     listaNueva.textContent = valor;
-    listaPadre.appendChild(listaNueva)    
-})
-formulario1.addEventListener("submit",(e)=>{
-    e.preventDefault();
-    const valor = texto1.value;
-    const listaNueva = document.createElement("li")
-    listaNueva.textContent = valor;
-    listaPadre.appendChild(listaNueva)    
+    listaNueva.appendChild(crearBotonesNuevos("❌","eliminar"))    
+    listaNueva.appendChild(crearBotonesNuevos("✏️","editar"))
+    listaPadre.appendChild(listaNueva)
+    texto1.value=""    
 })
 
-
+function crearBotonesNuevos(nombre, tipo){
+    const boton = document.createElement("button")
+    boton.textContent = nombre;
+    boton.classList = tipo;
+    return boton
+}
 
