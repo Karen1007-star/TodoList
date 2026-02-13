@@ -12,6 +12,13 @@ formulario1.addEventListener("submit",(e)=>{
     listaNueva.textContent = valor;
     listaPadre.appendChild(listaNueva)    
 })
+formulario1.addEventListener("submit",(e)=>{
+    e.preventDefault();
+    const valor = texto1.value;
+    const listaNueva = document.createElement("li")
+    listaNueva.textContent = valor;
+    listaPadre.appendChild(listaNueva)    
+})
 
 
 

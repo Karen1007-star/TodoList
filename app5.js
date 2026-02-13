@@ -63,3 +63,4 @@ $recargar.addEventListener("click",()=>{
     $visitas.textContent = "Has visitado la página " + contador + " veces";
     localStorage.setItem(CLAVE_CONTADOR, contador);
 })
+
