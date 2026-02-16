@@ -15,6 +15,8 @@ formulario8.addEventListener("submit",(e)=>{
     lista.append(creaButon("❌","eliminar"))
     lista.append(creaButon("✏️","editar"))
     textActivi.value="";
+
+    guardarDatos()
 })
 
 ulLista.addEventListener("click",(e)=>{
@@ -36,9 +38,34 @@ function eliminar1(identidad){
     if(confirm("estas seguro?")){
         identidad.remove();
     }
+    guardarDatos()
 }
 
 function editar1(identidad){
     const nuevito = prompt("edita aqui", identidad.firstChild.textContent)
     identidad.firstChild.textContent = nuevito;
+    guardarDatos()
 }
+
+function guardarDatos(){
+    const tareas = []
+    ulLista.querySelectorAll("li").forEach((lista)=>{
+        tareas.push(lista.firstChild.textContent)
+    })
+    localStorage.setItem("misActividades",JSON.stringify(tareas))
+}
+
+function cargarLisitita(){
+    const datos = JSON.parse(localStorage.getItem("misActividades"))
+    if(datos){
+        datos.forEach((tareitas)=>{
+            const li=document.createElement("li")
+            li.textContent = tareitas;
+            li.append(creaButon("❌","eliminar"))
+            li.append(creaButon("✏️","editar"))
+            ulLista.appendChild(li)
+        })
+    }
+}
+
+cargarLisitita();
